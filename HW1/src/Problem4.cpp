@@ -1,3 +1,8 @@
+// Name: Luke McCarthy
+// Email: lukehmcc@bu.edu
+// Collaborator Name: Ronald Chambergo
+// Collaborator Email: ronc4908@bu.edu
+
 #include "Problem4.h"
 #include <iostream>
 using namespace std;

@@ -1,3 +1,7 @@
+// Name: Luke McCarthy
+// Email: lukehmcc@bu.edu
+// Collaborator Name: Ronald Chambergo
+// Collaborator Email: ronc4908@bu.edu
 #include "Problem5.h"
 
 void appendStr(char *dest, char c);
