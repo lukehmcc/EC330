@@ -2,8 +2,16 @@
 // Email: lukehmcc@bu.edu
 // Collaborator Name: Ronald Chambergo
 // Collaborator Email: ronc4908@bu.edu
-#include "Problem5.h"
 
+// HEADER
+#ifndef PROBLEM5_H
+#define PROBLEM5_H
+
+void strXpos(char *dest, const char *src);
+
+#endif // PROBLEM5_H
+
+// IMPL
 void appendStr(char *dest, char c);
 char *shaveStr(char *in);
 

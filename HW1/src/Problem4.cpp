@@ -3,7 +3,15 @@
 // Collaborator Name: Ronald Chambergo
 // Collaborator Email: ronc4908@bu.edu
 
-#include "Problem4.h"
+// HEADER
+#ifndef PROBLEM4_H
+#define PROBLEM4_H
+
+bool isJumbled(char *str1, char *str2);
+
+#endif // PROBLEM4_H
+
+// IMPL
 #include <iostream>
 using namespace std;
 
