@@ -15,19 +15,18 @@ bool isJumbled(char *str1, char *str2);
 #include <iostream>
 using namespace std;
 
-int main(int argc, char *argv[]) {
-  // Create help message
-  if (argc != 3) {
-    printf("Error: Incorrect arguments provided.\nUsage: "
-           "MyBitApp <inputFile> <outputFile>\n"
-           "  - inputFile: Path to the input text file\n"
-           "  - outputFile: Path to the output text file\n");
-    return 1;
-  }
-  printf("%s %s\n", argv[1], argv[2]);
-  isJumbled(argv[1], argv[2]);
-  return 0;
-}
+// int main(int argc, char *argv[]) {
+//   // Create help message
+//   if (argc != 3) {
+//     printf("Error: Incorrect arguments provided.\nUsage: "
+//            "MyBitApp <inputFile> <outputFile>\n"
+//            "  - inputFile: Path to the input text file\n"
+//            "  - outputFile: Path to the output text file\n");
+//     return 1;
+//   }
+//   isJumbled(argv[1], argv[2]);
+//   return 0;
+// }
 
 bool isJumbled(char *str1, char *str2) {
   // create an 8 bit int array and count each letter

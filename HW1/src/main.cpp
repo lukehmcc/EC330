@@ -10,11 +10,11 @@ void problem5tests();
 void runProblem4Test(const char *s1, const char *s2, bool expected);
 void runProblem5Test(const char *input, const char *expected);
 
-// int main() {
-//   problem4tests();
-//   problem5tests();
-//   return 0;
-// }
+int main() {
+  problem4tests();
+  problem5tests();
+  return 0;
+}
 
 /* All test cases for isJumbled() */
 void problem4tests() {
