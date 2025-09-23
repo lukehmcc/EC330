@@ -11,9 +11,6 @@ vector<int> checkBalanced(vector<string> dataset);
 
 #endif // PROBLEM3_H
 
-#include "Problem3.h"
-using namespace std;
-
 vector<int> checkBalanced(vector<string> dataset) {
   vector<int> toReturn(dataset.size());
   for (int i = 0; i < dataset.size(); i++) {
