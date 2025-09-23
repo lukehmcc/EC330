@@ -1,5 +1,16 @@
 // Problem3.cpp
 // Author: Luke McCarthy
+
+#ifndef PROBLEM3_H
+#define PROBLEM3_H
+#include <string>
+#include <vector>
+using namespace std;
+
+vector<int> checkBalanced(vector<string> dataset);
+
+#endif // PROBLEM3_H
+
 #include "Problem3.h"
 using namespace std;
 
