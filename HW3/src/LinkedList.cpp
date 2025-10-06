@@ -57,13 +57,14 @@ int LinkedList::removeFromTail() {
   Node *current = head;
   // check if empty
   if (current == nullptr) {
+    cout << "Error: cannot remove empty tail" << endl;
     return -1;
   }
   // check if there is only 1 value
   if (current->next == nullptr) {
     int tmp = current->data;
     delete current->next;
-    current = nullptr;
+    head = nullptr;
     return tmp;
   }
 
@@ -95,6 +96,10 @@ void LinkedList::insertToHead(int data) {
 
 // remove node from head of list, return its data
 int LinkedList::removeFromHead() {
+  if (head == nullptr) {
+    cout << "Error: cannot pull from empty linked list" << endl;
+    return -1;
+  }
   int tmp = head->data;
   head = head->next;
   return tmp;
@@ -170,3 +175,29 @@ bool StackFromList::isEmpty() {
     return false;
   }
 }
+
+QueueFromList::QueueFromList() {
+  // init
+  list = new LinkedList();
+}
+QueueFromList::~QueueFromList() {
+  // nuke that list
+  delete list;
+}
+void QueueFromList::enqueue(int i) {
+  // insert to head
+  list->insertToHead(i);
+}
+int QueueFromList::dequeue() {
+  // remove from tail
+  return list->removeFromTail();
+}
+bool QueueFromList::isEmpty() {
+  // get size
+  if (list->getSize() == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+void QueueFromList::print() { list->print(); }

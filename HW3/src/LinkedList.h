@@ -46,4 +46,16 @@ private:
   LinkedList *list; // internal linked list to keep track of state
 };
 
+class QueueFromList {
+public:
+  QueueFromList();     // constructor
+  ~QueueFromList();    // destructor
+  void enqueue(int i); // add to the queue
+  int dequeue();       // remove from the queue
+  bool isEmpty();      // check if empty
+  void print();        // print out
+private:
+  LinkedList *list; // internal list to keep track of state
+};
+
 #endif /* LinkedList_h */

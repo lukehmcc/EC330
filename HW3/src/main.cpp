@@ -78,37 +78,38 @@ int main(int argc, const char *argv[]) {
     cout << "not ";
   cout << "empty" << endl;
 
-  // /*** For part (c): Testing of queue: ***/
-  // cout << endl << endl << "*** Queue: ***" << endl;
-  // QueueFromList myQueue;
-  //
-  // cout << "Enqueueing to the queue: 1 2 3 4" << endl;
-  //
-  // myQueue.enqueue(1);
-  // myQueue.enqueue(2);
-  // myQueue.enqueue(3);
-  // myQueue.enqueue(4);
-  //
-  // cout << "The head of the queue was " << myQueue.dequeue() << endl;
-  // cout << "The head of the queue was " << myQueue.dequeue() << endl;
-  //
-  // cout << "Enqueueing to the queue: 5" << endl;
-  //
-  // myQueue.enqueue(5);
-  //
-  // cout << "The queue is ";
-  // if (!myQueue.isEmpty())
-  //     cout << "not ";
-  // cout << "empty" << endl;
-  //
-  // cout << "The head of the queue was " << myQueue.dequeue() << endl;
-  // cout << "The head of the queue was " << myQueue.dequeue() << endl;
-  // cout << "The head of the queue was " << myQueue.dequeue() << endl;
-  //
-  // cout << "The queue is ";
-  // if (!myQueue.isEmpty())
-  //     cout << "not ";
-  // cout << "empty" << endl;
+  /*** For part (c): Testing of queue: ***/
+  cout << endl << endl << "*** Queue: ***" << endl;
+  QueueFromList myQueue;
+
+  cout << "Enqueueing to the queue: 1 2 3 4" << endl;
+
+  myQueue.enqueue(1);
+  myQueue.enqueue(2);
+  myQueue.enqueue(3);
+  myQueue.enqueue(4);
+
+  cout << "The head of the queue was " << myQueue.dequeue() << endl;
+  cout << "The head of the queue was " << myQueue.dequeue() << endl;
+
+  cout << "Enqueueing to the queue: 5" << endl;
+
+  myQueue.enqueue(5);
+
+  cout << "The queue is ";
+  if (!myQueue.isEmpty())
+    cout << "not ";
+  cout << "empty" << endl;
+
+  cout << "The head of the queue was " << myQueue.dequeue() << endl;
+  cout << "The head of the queue was " << myQueue.dequeue() << endl;
+  cout << "The head of the queue was " << myQueue.dequeue() << endl;
+  cout << "The head of the queue was " << myQueue.dequeue() << endl;
+
+  cout << "The queue is ";
+  if (!myQueue.isEmpty())
+    cout << "not ";
+  cout << "empty" << endl;
 
   return 0;
 }
