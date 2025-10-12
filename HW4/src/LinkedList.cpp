@@ -217,15 +217,6 @@ void LinkedList::swap(Node *node1, Node *node2) {
   node1->next = node2next;
   node2->prev = node1prev;
   node2->next = node1next;
-
-  if (node1->prev == nullptr)
-    head = node1;
-  if (node1->next == nullptr)
-    tail = node1;
-  if (node2->prev == nullptr)
-    head = node2;
-  if (node2->next == nullptr)
-    tail = node2;
 }
 
 // removes node and returns it's value
@@ -264,16 +255,11 @@ void LinkedList::zeroSort() {
     Node *sacrifice = current;
     current = current->next;
     iterator++;
-    print();
-    printf("Current node is %d, head is: %d, tail is %d\n", sacrifice->data,
-           head->data, tail->data);
     // Now if it's smaller than zero send it to the front
     if (sacrifice != head && sacrifice->data < 0) {
-      cout << "Inserting:  " << sacrifice->data << " to head." << endl;
       insertToHead(removeNode(sacrifice));
       // and if it's bigger than 0 send it to the back
     } else if (sacrifice != tail && sacrifice->data > 0) {
-      cout << "Inserting:  " << sacrifice->data << " to tail." << endl;
       insertToTail(removeNode(sacrifice));
     } else {
       // it's a zero, do nothing
