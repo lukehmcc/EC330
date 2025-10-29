@@ -217,6 +217,28 @@ void LinkedList::swap(Node *node1, Node *node2) {
   node1->next = node2next;
   node2->prev = node1prev;
   node2->next = node1next;
+  // validate integrity
+  Node *cur = head;
+  while (cur && cur->next) {
+    // cout << cur->data << " -> ";
+    if (cur->next->prev != cur) {
+      // handle error
+      cout << "Your link is borked bruv" << endl;
+      return;
+    }
+    cur = cur->next;
+  }
+  cur = tail;
+  while (cur && cur->prev) {
+    // cout << cur->data << " <- ";
+    if (cur->prev->next != cur) {
+      // handle error
+      cout << "Take a gander at your links my good fellow" << endl;
+      return;
+    }
+    cur = cur->prev;
+  }
+  // cout << cur->data << endl;
 }
 
 // removes node and returns it's value

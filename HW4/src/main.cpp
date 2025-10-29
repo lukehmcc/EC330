@@ -2,7 +2,7 @@
 //  main.cpp
 //  Linked_List_zeroSort
 //
-//  Created by Tali Moreshet
+//  Created by Luke McCarthy
 //
 
 #include "LinkedList.h"
