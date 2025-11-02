@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Run with the first argument
-./build/main "$1"
+make build && ./build/main "$1"

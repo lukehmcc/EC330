@@ -14,8 +14,15 @@ build:  $(SRCS)
 	mkdir -p $(BUILD_DIR)
 	$(CXX) -std=c++17 $(SRCS) -o $(TARGET)
 
+build-debug:  $(SRCS) 
+	mkdir -p $(BUILD_DIR)
+	$(CXX) -std=c++17 -g $(SRCS) -o $(TARGET)
+
 run: build
 	./$(TARGET)
+
+debug: build-debug
+	gdb ./$(TARGET)
 
 clean:
 	rm -rf ${BUILD_DIR}
