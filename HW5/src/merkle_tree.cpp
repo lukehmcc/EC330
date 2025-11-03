@@ -14,7 +14,7 @@ from an inputed file.
 using namespace std;
 
 /* Hash function*/
-inline string fnv1a(string const &text) {
+string merkleTree::fnv1a(string const &text) {
   // 64 bit params
   uint64_t constexpr fnv_prime = 1099511628211ULL;
   uint64_t constexpr fnv_offset_basis = 14695981039346656037ULL;
@@ -85,7 +85,7 @@ vector<Node *> merkleTree::recursiveReduce(vector<Node *> &nodes) {
   }
   // pad out to multiple of 4
   while (nodes.size() % 4 != 0) {
-    nodes.push_back(new Node("NULL"));
+    nodes.push_back(new Node(""));
   }
 
   vector<Node *> reducedNodes;
@@ -95,12 +95,10 @@ vector<Node *> merkleTree::recursiveReduce(vector<Node *> &nodes) {
     vector<Node *> subVec;
     for (int j = 0; j < 4; j++) {
       // Don't actually push null to the concat
-      if (nodes[j + i]->key != "NULL") {
-        subVec.push_back(nodes[i + j]);
-      }
+      subVec.push_back(nodes[i + j]);
     }
 
-    Node *newNode = new Node(fnv1a(concatenateHash(subVec)));
+    Node *newNode = new Node(concatenateHash(subVec));
     newNode->children = subVec;
     reducedNodes.push_back(newNode);
   }
@@ -162,7 +160,7 @@ void merkleTree::printTree(const Node *node, int depth) {
     offset += " ";
     vector<Node *> nextToPrint; // store upcoming level
     for (int i = 0; i < toPrint.size(); i++) {
-      if (toPrint[i]->key != "NULL") {
+      if (toPrint[i]->key != "") {
         cout << offset << "Level " << depth << ": " << toPrint[i]->key << endl;
       }
       for (int j = 0; j < toPrint[i]->children.size(); j++) {

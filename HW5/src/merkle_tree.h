@@ -27,6 +27,7 @@ private:
 public:
   vector<int> data;                    // store data that tree is built on
   merkleTree();                        // constructor
+  string fnv1a(string const &text);    // expose the hash funct
   merkleTree(const vector<int> &data); // constructor with arguments
   string concatenateHash(const vector<Node *> &nodes); // merge and rehash nodes
   void printTree(const Node *node, int depth = 0);     // visualization of tree

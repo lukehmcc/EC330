@@ -105,6 +105,12 @@ int main(int argc, char **argv) {
   // run custom tests
   testSuite();
 
+  // debug output
+  cout << "Hi: "
+       << tree.fnv1a("126381344239974878681263813772253237250112638136623020744"
+                     "29012638131125462603235")
+       << endl;
+
   return 0;
 }
 
