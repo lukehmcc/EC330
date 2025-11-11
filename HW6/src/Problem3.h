@@ -2,6 +2,7 @@
 //  Problem3.h
 //  ec330_hw6
 //
+#include <queue>
 #include <string>
 using namespace std;
 
@@ -11,5 +12,6 @@ using namespace std;
 int threeA(string fileName);
 int threeB(string fileName);
 int threeC(string fileName);
+bool isPangram(std::queue<char> inQueue);
 
 #endif
