@@ -1,0 +1,34 @@
+Name: Luke McCarthy
+Email: lukehmcc@bu.edu
+BUID: U80112684
+
+➜  HW6 git:(main) ✗ make run
+mkdir -p ./build
+g++ -std=c++17 ./src/main.cpp ./src/Problem3.cpp -o ./build/main
+././build/main
+The number of BU-IDs in the file is: 3
+The length of the shortest pangram in the file is: 54
+The number of valid dictionary words in the file is: 573316
+
+Approaches:
+
+Problem 1: I used a simple state machine to walk through the file and whenever
+it encountered a U, it would keep track of the next numbers to see if it was a
+BUID. This should be O(n) time as every spot is only traversed once.
+
+Problem 2: I used a "sliding window" approach. I had:
+- A frequency table that would keep track of all letters in the current window.
+- A queue that I would fill with new chars until it created a pangram. 
+- Once it did, I checked if it was the shortest. If it was, write that down.
+- Then dequeue until it was not longer a pangram. 
+- Repeat until EOF.
+This should also run in O(n) time as the size of the window is independent of
+file size.
+
+Problem 3: To tackle this I first built a Trie. I did this with objects &
+unordered maps for the children. Once the Trie was ready, I then started from
+every position in the file to search for possible words. If it ever encountered
+a word it would keep track of it, and when it falls off while searching, it
+moves to the next starting character. This should be O(n*log(m) time). n is the
+size of the file & m is the size of the dictionary. Since each level of the Trie
+can only have 26 children, the size of the Trie should be limited to log_26(m).

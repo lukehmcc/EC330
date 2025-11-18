@@ -163,7 +163,63 @@ public:
   std::unordered_map<std::string, TrieNode *> children;
   bool isWord;
   TrieNode() : isWord(false) {}
+  TrieNode(std::string key) : isWord(false), key(key) {}
+
+  // prints from whatever level you give it
+  static void printFrom(const TrieNode *root, std::string prefix = "",
+                        int depth = 0) {
+    if (!root)
+      return;
+
+    // indent 2 spaces per level
+    std::string indent(depth * 2, ' ');
+
+    // print the current key (empty on the synthetic root)
+    if (!prefix.empty())
+      std::cout << indent << prefix << (root->isWord ? " *" : "") << '\n';
+
+    // recurse into children
+    for (const auto &kv : root->children)
+      printFrom(kv.second, kv.first, depth + 1);
+  }
+
+  // prints all info of the current node
+  void printNode() const {
+    std::cout << "Node key: \"" << key << "\"\n";
+    std::cout << "isWord: " << std::boolalpha << isWord << '\n';
+    std::cout << "Children count: " << children.size() << '\n';
+    if (!children.empty()) {
+      std::cout << "Children keys: ";
+      for (const auto &kv : children)
+        std::cout << '"' << kv.first << "\" ";
+      std::cout << '\n';
+    }
+  }
 };
+
+// peeks ahead at the stream to get future chars n spots ahead
+char peekAhead(std::istream &in, std::size_t n) {
+  std::string buf;
+  buf.reserve(n);
+  char c;
+  while (buf.size() < n && in.get(c))
+    buf.push_back(c);
+
+  bool sucsess = (n == buf.size()) ? true : false;
+
+  // restore the stream position
+  for (auto it = buf.rbegin(); it != buf.rend(); ++it)
+    in.putback(*it);
+
+  in.clear(); // reset in case there is an overflow near EOF
+
+  // either return the char or an error
+  if (sucsess) {
+    return c;
+  } else {
+    return '\0';
+  }
+}
 
 // returns how many valid dictonary words there are in the file
 int threeC(std::string fileName) {
@@ -189,9 +245,16 @@ int threeC(std::string fileName) {
       std::string subst = line.substr(0, i + 1); // grab that many chars
       // if it contains that substring
       if (current->children.count(subst)) {
-
+        current = current->children.at(subst);
         // or if it doesn't
       } else {
+        // and if it is the full size, mark it as a word
+        TrieNode *newNode = new TrieNode(subst);
+        if (i + 1 == line.size()) {
+          newNode->isWord = true;
+        }
+        current->children[subst] = newNode;
+        current = current->children.at(subst);
       }
     }
   }
@@ -202,6 +265,45 @@ int threeC(std::string fileName) {
     std::cerr << "Cannot open " << fileName << '\n';
     return -1;
   }
-  // 3: If they do add to the count
-  return 0;
+  int wordCount = 0;
+  char ch;
+  while (inFile.get(ch)) {
+    current = root;
+    std::string word(1, ch);
+    int c = 0; // acc to keep track of how far forward you want to peek
+    // keep recurring until you fall off the trie
+    while (true) {
+      c++;
+      // if the word exists, do something
+      if (current->children.count(word)) {
+        // set the current to the child
+        current = current->children.at(word);
+        // if it is a word count that
+        if (current->isWord) {
+          wordCount++;
+        }
+        // then seek ahead to the next letter
+        char peek = peekAhead(inFile, c);
+        // if you hit EOF, break
+        if (peek == '\0') {
+          break;
+        }
+        word.push_back(peek);
+        // now that the word has updated, repeat this
+      } else {
+        // you feel off the tree, break
+        break;
+      }
+    }
+  }
+  // that while lops fails but the last var gets pulled, so make sure to check
+  // if that one is a valid trie entry
+
+  std::string endString = std::string(1, ch);
+  if (root->children.count(endString) && root->children.at(endString)->isWord) {
+    wordCount++;
+  }
+
+  // 3: Return
+  return wordCount;
 }
