@@ -2,13 +2,14 @@
 
 int main(int argc, const char *argv[]) {
 
-  if (argc != 2) {
-    cout << "Please supply a file name as input" << endl;
+  if (argc != 3) {
+    cout << "Please supply a file name & starting city as input" << endl;
     return -1;
   }
 
   Graph graph;
   graph.generateGraph(argv[1]);
+  graph.distTwoNeighbors(argv[2]);
 
   return 0;
 }

@@ -10,7 +10,7 @@ all:
 	g++ -std=c++17 main.cpp Problem5.h Problem5.cpp -o hw8 
 
 run: all
-	./hw8 flights.txt
+	./hw8 flights.txt "BOS"
 	
 clean:
 	rm hw8
